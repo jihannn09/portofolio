@@ -28,7 +28,7 @@ tombol.addEventListener(
       function() {
 
         window.location.href =
-          "index.html";
+          "index1.html";
 
       },
       1200
