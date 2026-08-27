@@ -1,0 +1,224 @@
+@import url(
+  'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap'
+);
+
+:root {
+  --pink: #efb6c8;
+  --pink-light: #fff0f4;
+  --peach: #f3c7a9;
+  --text: #514b4b;
+  --muted: #918889;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  font-family: "DM Sans", sans-serif;
+
+  color: var(--text);
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffaf5,
+      #fff4f5,
+      #f6faf5
+    );
+}
+
+.login-page {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.login-card {
+  width: min(410px, 100%);
+
+  padding: 40px 34px 30px;
+
+  background:
+    rgba(255,255,255,.9);
+
+  border-radius: 28px;
+
+  text-align: center;
+
+  box-shadow:
+    0 18px 50px
+    rgba(120,90,90,.09);
+
+  position: relative;
+  z-index: 2;
+}
+
+.logo {
+  width: 62px;
+  height: 62px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+
+  background: var(--pink-light);
+
+  color: #d990a8;
+
+  font-size: 27px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+
+  color: #bd8c9d;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 0;
+
+  font-size:
+    clamp(28px, 7vw, 37px);
+}
+
+.subtitle {
+  margin: 13px auto 27px;
+
+  max-width: 310px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+button {
+  width: 100%;
+  height: 52px;
+
+  border: none;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--peach),
+      var(--pink)
+    );
+
+  color: white;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: .8;
+}
+
+.hint {
+  margin: 18px 0 0;
+
+  color: #aaa0a0;
+
+  font-size: 10px;
+}
+
+
+/* Bunga */
+
+#flowers {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+  z-index: 1;
+}
+
+.flower {
+  position: absolute;
+
+  top: -50px;
+
+  user-select: none;
+
+  opacity: .7;
+
+  animation:
+    jatuh linear forwards,
+    goyang ease-in-out infinite;
+}
+
+@keyframes jatuh {
+
+  to {
+    transform:
+      translateY(110vh)
+      rotate(360deg);
+  }
+
+}
+
+@keyframes goyang {
+
+  0%, 100% {
+    margin-left: -15px;
+  }
+
+  50% {
+    margin-left: 15px;
+  }
+
+}
+
+
+/* HP */
+
+@media (max-width: 480px) {
+
+  .login-card {
+    padding:
+      34px 23px 27px;
+
+    border-radius: 24px;
+  }
+
+}
