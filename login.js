@@ -1,106 +1,21 @@
-// ================= TOMBOL MASUK =================
 
-const tombol =
-  document.getElementById("loginButton");
+// Mengambil form login dari HTML
+const form = document.getElementById("loginForm");
 
-const tulisan =
-  document.getElementById("buttonText");
+// Mengambil tulisan "Masuk"
+const buttonText = document.getElementById("buttonText");
 
-const tunggu =
-  document.getElementById("loadingText");
+// Mengambil tulisan "Tunggu sebentar"
+const loadingText = document.getElementById("loadingText");
 
+// Saat form dikirim
+form.addEventListener("submit", function () {
 
-tombol.addEventListener(
-  "click",
-  function() {
+  // Menyembunyikan tulisan Masuk
+  buttonText.hidden = true;
 
-    // Tombol tidak bisa ditekan lagi
-    tombol.disabled = true;
+  // Menampilkan tulisan Tunggu sebentar
+  loadingText.hidden = false;
 
-    // Ganti tulisan tombol
-    tulisan.hidden = true;
+});
 
-    tunggu.hidden = false;
-
-
-    // Tunggu sebentar
-    setTimeout(
-      function() {
-
-        window.location.href =
-          "index1.html";
-
-      },
-      1200
-    );
-
-  }
-);
-
-
-// ================= BUNGA =================
-
-const tempatBunga =
-  document.getElementById("flowers");
-
-
-function buatBunga() {
-
-  const bunga =
-    document.createElement("span");
-
-  bunga.classList.add("flower");
-
-
-  const pilihan = [
-    "✿",
-    "❀",
-    "✾",
-    "🌸"
-  ];
-
-
-  bunga.textContent =
-    pilihan[
-      Math.floor(
-        Math.random() * pilihan.length
-      )
-    ];
-
-
-  bunga.style.left =
-    Math.random() * 100 + "vw";
-
-
-  bunga.style.fontSize =
-    Math.random() * 15 + 13 + "px";
-
-
-  const durasi =
-    Math.random() * 5 + 6;
-
-
-  bunga.style.animationDuration =
-    durasi + "s, " +
-    (Math.random() * 2 + 2) + "s";
-
-
-  tempatBunga.appendChild(bunga);
-
-
-  setTimeout(
-    function() {
-
-      bunga.remove();
-
-    },
-    durasi * 1000
-  );
-
-}
-
-
-setInterval(
-  buatBunga,
-  700
-);

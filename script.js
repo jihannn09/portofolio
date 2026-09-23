@@ -1,137 +1,106 @@
-// ================= EFEK SAAT DIKLIK =================
+// ================= TOMBOL MASUK =================
 
-const bentuk = [
-  "✦",
-  "✿",
-  "♡",
-  "❀"
-];
+const tombol =
+  document.getElementById("loginButton");
+
+const tulisan =
+  document.getElementById("buttonText");
+
+const tunggu =
+  document.getElementById("loadingText");
 
 
-document.addEventListener(
+tombol.addEventListener(
   "click",
-  function(event) {
+  function() {
 
-    const efek =
-      document.createElement("span");
+    // Tombol tidak bisa ditekan lagi
+    tombol.disabled = true;
 
-    efek.textContent =
-      bentuk[
-        Math.floor(
-          Math.random() * bentuk.length
-        )
-      ];
+    // Ganti tulisan tombol
+    tulisan.hidden = true;
 
-    efek.style.position = "fixed";
-    efek.style.left =
-      event.clientX + "px";
-    efek.style.top =
-      event.clientY + "px";
-
-    efek.style.pointerEvents = "none";
-    efek.style.zIndex = "9999";
-
-    efek.style.color = "#d99bad";
-    efek.style.fontSize = "18px";
-
-    efek.style.transform =
-      "translate(-50%, -50%)";
-
-    efek.style.transition =
-      "all .7s ease";
-
-    document.body.appendChild(efek);
+    tunggu.hidden = false;
 
 
-    // Animasi
-    requestAnimationFrame(() => {
+    // Tunggu sebentar
+    setTimeout(
+      function() {
 
-      efek.style.opacity = "0";
+        window.location.href =
+          "profil.html";
 
-      efek.style.transform =
-        "translate(-50%, -100%) scale(1.4)";
-
-    });
-
-
-    // Hapus
-    setTimeout(() => {
-
-      efek.remove();
-
-    }, 700);
+      },
+      1200
+    );
 
   }
 );
 
-// ================= KURSOR BUNGA =================
 
-const cursor = document.createElement("div");
+// ================= BUNGA =================
 
-cursor.className = "kursor-lucu";
-
-document.body.appendChild(cursor);
-
-document.addEventListener("mousemove", function(e) {
-
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-
-});
-
-// Bunga & love
-const tempat = document.getElementById("hiasan-jatuh");
-const hapus = document.getElementById("hapusHiasan");
-
-const pilihan = [
-  ["🌸", "#f3a9bd"],
-  ["✿", "#f6b6c8"],
-  ["❀", "#f5b88f"],
-  ["♡", "#e9a6b8"],
-  ["♥", "#ed9eae"],
-  ["🌼", "#f3d58a"]
-];
-
-let aktif = true;
+const tempatBunga =
+  document.getElementById("flowers");
 
 
-// Membuat bunga
-setInterval(() => {
+function buatBunga() {
 
-  if (!aktif) return;
+  const bunga =
+    document.createElement("span");
 
-  const bunga = document.createElement("span");
+  bunga.classList.add("flower");
 
-  const pilih =
-    pilihan[Math.floor(Math.random() * pilihan.length)];
 
-  bunga.className = "hiasan";
-  bunga.textContent = pilih[0];
-  bunga.style.color = pilih[1];
+  const pilihan = [
+    "✿",
+    "❀",
+    "✾",
+    "🌸"
+  ];
+
+
+  bunga.textContent =
+    pilihan[
+      Math.floor(
+        Math.random() * pilihan.length
+      )
+    ];
+
 
   bunga.style.left =
     Math.random() * 100 + "vw";
 
+
   bunga.style.fontSize =
-    Math.random() * 8 + 12 + "px";
-
-  tempat.appendChild(bunga);
-
-  setTimeout(() => {
-    bunga.remove();
-  }, 8000);
-
-}, 2000);
+    Math.random() * 15 + 13 + "px";
 
 
-// Tombol hapus
-hapus.addEventListener("click", () => {
+  const durasi =
+    Math.random() * 5 + 6;
 
-  aktif = !aktif;
 
-  tempat.innerHTML = "";
+  bunga.style.animationDuration =
+    durasi + "s, " +
+    (Math.random() * 2 + 2) + "s";
 
-  hapus.textContent =
-    aktif ? "🧹" : "🌸";
 
-});
+  tempatBunga.appendChild(bunga);
+
+
+  setTimeout(
+    function() {
+
+      bunga.remove();
+
+    },
+    durasi * 1000
+  );
+
+}
+
+
+setInterval(
+  buatBunga,
+  700
+);
