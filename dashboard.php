@@ -1,29 +1,32 @@
-
-
-
-<?php 
+ <?php
 session_start();
-include 'cek_session.php'; // proteksi halaman (dibahas di bagian 5)
 
+// Proteksi halaman
+include 'cek_session.php';
 
+// Header
 include 'layouts/header.php';
+
+// Sidebar
 include 'layouts/sidebar.php';
 ?>
 
+<main class="content">
 
-  <main class="content">
+    <!-- Isi dashboard -->
+    <section class="welcome">
+        <h1>
+            Selamat datang, <?php echo $_SESSION['username']; ?> ♡
+        </h1>
 
-            <section class="welcome">
-                <h1>Selamat datang, <?php $_SESSION['username'] ?></h1>
+        <p>
+            Senang melihat kamu kembali.
+        </p>
+    </section>
 
-                <p>
-                    Senang melihat kamu kembali.
-                </p>
-            </section>
-
-        </main>
-
+</main>
 
 <?php
-include 'layouts/footer.php'
+// Footer
+include 'layouts/footer.php';
 ?>

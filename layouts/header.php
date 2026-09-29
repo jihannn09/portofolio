@@ -87,6 +87,14 @@
             color: #918889;
             font-size: 12px;
         }
+        
+        /* Menu aktif */
+        .sidebar a.aktif {
+            background: #f7c8d6;
+            color: #9d536b;
+            font-weight: bold;
+            border-radius: 12px;
+        }
     </style>
 </head>
 

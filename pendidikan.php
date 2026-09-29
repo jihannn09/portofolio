@@ -4,10 +4,11 @@ include 'layouts/sidebar.php';
 ?>
 
 
+
   <main class="content">
 
             <section class="welcome">
-                <h1>ini ,menu project ♡</h1>
+                <h1>ini ,menu pendidikan ♡</h1>
 
                 <p>
                     Senang melihat kamu kembali.
