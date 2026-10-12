@@ -47,7 +47,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
         <a href="karya.php"
            <?php if ($current_page == 'karya.php') echo 'class="aktif"'; ?>>
-            ✦ Karya
+            ✦ Project
         </a>
 
     </aside>

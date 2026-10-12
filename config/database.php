@@ -1,7 +1,7 @@
 <?php
 // Konfigurasi database
 $host = 'localhost';
-$db = 'portofolio';
+$db = 'portofolioo';
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';
@@ -11,6 +11,7 @@ $options = [
  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
  PDO::ATTR_EMULATE_PREPARES => false,
 ];
+
 try {
  $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
