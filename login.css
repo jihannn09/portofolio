@@ -1,0 +1,198 @@
+css
+/* Mengatur semua elemen */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Tampilan dasar halaman */
+body {
+  font-family: Arial, sans-serif;
+  background: #fffaf6;
+  color: #514b4b;
+}
+
+/* Tempat bunga jatuh */
+#hiasan-login {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Bentuk bunga */
+.bunga {
+  position: absolute;
+  top: -30px;
+  font-size: 18px;
+  opacity: 0.65;
+
+  /* Animasi bunga jatuh */
+  animation: jatuh 8s linear forwards;
+}
+
+/* Gerakan bunga dari atas ke bawah */
+@keyframes jatuh {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* Posisi halaman login */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* Kotak login */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 38px 32px;
+
+  background: white;
+  border: 1px solid #f3dddd;
+  border-radius: 25px;
+
+  text-align: center;
+
+  /* Bayangan kotak */
+  box-shadow: 0 10px 30px rgba(200, 160, 160, 0.15);
+}
+
+/* Logo hati */
+.logo {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f9d8df;
+  color: #d9829b;
+
+  border-radius: 50%;
+  font-size: 30px;
+}
+
+/* Tulisan PROFIL PUBLIK */
+.eyebrow {
+  margin-bottom: 10px;
+  color: #d9829b;
+
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* Judul */
+h1 {
+  margin-bottom: 10px;
+  font-size: 26px;
+}
+
+/* Keterangan di bawah judul */
+.subtitle {
+  margin-bottom: 25px;
+  color: #918889;
+  font-size: 14px;
+}
+
+/* Jarak setiap input */
+.input-group {
+  margin-bottom: 17px;
+  text-align: left;
+}
+
+/* Nama Email dan Password */
+.input-group label {
+  display: block;
+  margin-bottom: 7px;
+
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Kotak input */
+.input-group input {
+  width: 100%;
+  padding: 13px;
+
+  border: 1px solid #ead8d8;
+  border-radius: 12px;
+
+  outline: none;
+  background: #fffaf8;
+
+  font-size: 14px;
+  color: #514b4b;
+}
+
+/* Warna border saat input dipilih */
+.input-group input:focus {
+  border-color: #efb6c8;
+}
+
+/* Tombol masuk */
+#loginButton {
+  width: 100%;
+  padding: 14px;
+
+  border: none;
+  border-radius: 13px;
+
+  background: #efb6c8;
+  color: white;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  /* Animasi tombol */
+  transition: 0.2s;
+}
+
+/* Efek saat tombol disentuh */
+#loginButton:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Tombol kembali */
+.kembali {
+  display: inline-block;
+  margin-top: 20px;
+
+  color: #d9829b;
+  font-size: 13px;
+
+  text-decoration: none;
+}
+
+/* Efek tombol kembali */
+.kembali:hover {
+  text-decoration: underline;
+}
+
+/* Tampilan untuk HP */
+@media (max-width: 480px) {
+
+  .login-card {
+    padding: 30px 22px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+}
