@@ -1,7 +1,11 @@
 <?php
 // Konfigurasi database
 $host = 'localhost';
+<<<<<<< HEAD
 $db = 'jihan';
+=======
+$db = 'portofolioo';
+>>>>>>> a1419916e01c78024547c8e4fc8368bb6678398b
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';
