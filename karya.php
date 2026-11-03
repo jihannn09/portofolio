@@ -102,24 +102,22 @@ include 'layouts/sidebar.php';
                                     <?= htmlspecialchars($project['dibuat_pada'] ?? '') ?>
                                 </td>
 
-                                <!-- Tombol hapus -->
+                                <!-- Tombol hapus & edit -->
                                 <td>
-                                    <form method="POST" action="hapus_karya.php"
-                                        onsubmit="return confirm('Yakin ingin menghapus project ini?')">
+                                    <a href="edit_karya.php?id=<?= (int) $project['id'] ?>"
+                                        class="project-edit">Edit</a>
 
-                                        <input
-                                            type="hidden"
-                                            name="id"
+                                    <form method="post" action="hapus_karya.php"
+                                        style="display:inline"
+                                        onsubmit="return confirm('Hapus project ini?');">
+
+                                        <input type="hidden" name="id"
                                             value="<?= (int) $project['id'] ?>">
 
-                                        <button
-                                            type="submit"
-                                            name="hapus"
-                                            class="project-hapus">
-                                            Hapus
-                                        </button>
-
+                                        <button type="submit" name="hapus"
+                                            class="project-hapus">Hapus</button>
                                     </form>
+                                </td>
                                 </td>
 
                             </tr>
@@ -144,7 +142,7 @@ include 'layouts/sidebar.php';
 <?php include 'layouts/footer.php'; ?>
 
 <style>
-    /* Area utama project */
+    /* Tampilan utama */
     .project-content {
         flex: 1;
         min-width: 0;
@@ -153,49 +151,48 @@ include 'layouts/sidebar.php';
         color: #514b4b;
     }
 
-    /* Kotak judul */
+    /* Bagian judul */
     .project-heading {
         display: flex;
         align-items: center;
-        gap: 20px;
-        padding: 30px 36px;
+        gap: 16px;
+        padding: 24px 28px;
         margin-bottom: 18px;
         background: #ffffff;
-        border-radius: 25px;
+        border-radius: 20px;
     }
 
     .project-icon {
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-shrink: 0;
-        width: 55px;
-        height: 55px;
+        width: 48px;
+        height: 48px;
         background: #ffe5ec;
         color: #d9829b;
-        border-radius: 16px;
-        font-size: 28px;
+        border-radius: 14px;
+        font-size: 24px;
     }
 
     .project-heading h1 {
-        margin: 0 0 7px;
+        margin: 0 0 6px;
         color: #514b4b;
-        font-size: 30px;
+        font-size: 24px;
     }
 
     .project-heading p {
         margin: 0;
         color: #918889;
-        font-size: 16px;
+        font-size: 13px;
     }
 
     /* Kotak daftar project */
     .project-card {
-        padding: 25px;
+        padding: 22px;
         background: #ffffff;
         border: 1px solid #f9e6e9;
-        border-radius: 20px;
-        box-shadow: 0 4px 15px rgba(217, 130, 155, 0.04);
+        border-radius: 18px;
+        box-shadow: 0 4px 15px rgba(217, 130, 155, 0.05);
     }
 
     .project-card-top {
@@ -203,47 +200,46 @@ include 'layouts/sidebar.php';
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 14px;
-        margin-bottom: 20px;
+        gap: 12px;
+        margin-bottom: 18px;
     }
 
     .project-card-top h2 {
         margin: 0;
         color: #514b4b;
-        font-size: 19px;
+        font-size: 18px;
     }
 
     /* Tombol tambah */
     .project-tambah {
         display: inline-flex;
         align-items: center;
-        gap: 7px;
-        padding: 12px 17px;
+        gap: 6px;
+        padding: 10px 14px;
         background: #ffe5ec;
         color: #ce6687;
         border: 1px solid #fbd8e2;
-        border-radius: 12px;
-        font-size: 13px;
+        border-radius: 10px;
+        font-size: 12px;
         font-weight: bold;
         text-decoration: none;
         transition: 0.2s;
     }
 
-    .project-tambah span {
-        font-size: 19px;
-    }
-
     .project-tambah:hover {
         background: #f7c8d6;
-        transform: translateY(-1px);
     }
 
-    /* Tabel */
+    .project-tambah span {
+        font-size: 17px;
+    }
+
+    /* Tabel project */
     .project-table-wrapper {
         width: 100%;
         overflow-x: auto;
         border: 1px solid #f8e5e9;
-        border-radius: 14px;
+        border-radius: 12px;
     }
 
     .project-table {
@@ -254,26 +250,25 @@ include 'layouts/sidebar.php';
     }
 
     .project-table th {
-        padding: 16px 15px;
+        padding: 13px;
         background: #fff0f4;
         color: #cf6888;
         text-align: left;
         font-size: 12px;
         white-space: nowrap;
         border-bottom: 1px solid #f8e5e9;
+        text-align: center;
     }
 
     .project-table td {
-        padding: 17px 15px;
+        padding: 13px;
         color: #827981;
-        line-height: 1.7;
+        line-height: 1.6;
         vertical-align: middle;
         border-bottom: 1px solid #faedf0;
+        text-align: center;
     }
-
-    .project-table tbody tr {
-        transition: background 0.2s;
-    }
+    
 
     .project-table tbody tr:hover {
         background: #fff9fb;
@@ -284,32 +279,31 @@ include 'layouts/sidebar.php';
     }
 
     .project-judul {
-        min-width: 155px;
+        min-width: 130px;
         color: #514b4b !important;
         font-weight: bold;
     }
 
     .project-deskripsi {
-        min-width: 200px;
+        min-width: 180px;
     }
 
     .project-tanggal {
-        min-width: 115px;
+        min-width: 110px;
         white-space: nowrap;
     }
 
     /* Tombol lihat */
     .project-lihat {
         display: inline-block;
-        padding: 7px 11px;
+        padding: 6px 10px;
         background: #fff0f4;
         color: #d36c8c;
         border: 1px solid #f9dfe7;
-        border-radius: 9px;
+        border-radius: 8px;
         font-size: 11px;
         font-weight: bold;
         text-decoration: none;
-        white-space: nowrap;
     }
 
     .project-lihat:hover {
@@ -320,38 +314,55 @@ include 'layouts/sidebar.php';
         color: #b6a9ad;
     }
 
-    /* Tombol hapus */
+    /* Tombol edit dan hapus */
+    .project-edit,
     .project-hapus {
         display: inline-block;
-        padding: 7px 11px;
+        padding: 6px 10px;
+        border-radius: 8px;
+        font-size: 11px;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+
+
+    .project-edit {
+        background: #fff0f4;
+        color: #ce6687;
+        border: 1px solid #f9dfe7;
+    }
+
+    .project-edit:hover {
+        background: #f7c8d6;
+    }
+
+    .project-hapus {
         background: #fff0f0;
         color: #d66b78;
         border: 1px solid #f5d5d9;
-        border-radius: 9px;
-        font-size: 11px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.2s;
     }
 
     .project-hapus:hover {
         background: #f8d4d9;
     }
 
-    /* Tampilan saat data kosong */
+    /* Data kosong */
     .project-kosong {
         display: flex;
         align-items: center;
-        gap: 13px;
-        padding: 18px;
+        gap: 12px;
+        padding: 16px;
         background: #fff8fa;
         border: 1px solid #f9e5eb;
-        border-radius: 13px;
+        border-radius: 12px;
     }
 
     .project-kosong span {
         color: #d9829b;
-        font-size: 23px;
+        font-size: 22px;
     }
 
     .project-kosong p {
@@ -363,24 +374,22 @@ include 'layouts/sidebar.php';
     /* Tampilan HP */
     @media (max-width: 768px) {
         .project-content {
-            padding: 12px;
+            padding: 10px;
         }
 
         .project-heading {
-            gap: 13px;
-            padding: 23px 18px;
-            border-radius: 20px;
+            gap: 12px;
+            padding: 20px 16px;
         }
 
         .project-icon {
-            width: 43px;
-            height: 43px;
-            font-size: 23px;
-            border-radius: 12px;
+            width: 42px;
+            height: 42px;
+            font-size: 21px;
         }
 
         .project-heading h1 {
-            font-size: 21px;
+            font-size: 20px;
         }
 
         .project-heading p {
@@ -388,8 +397,7 @@ include 'layouts/sidebar.php';
         }
 
         .project-card {
-            padding: 15px;
-            border-radius: 16px;
+            padding: 14px;
         }
 
         .project-card-top {
@@ -397,12 +405,12 @@ include 'layouts/sidebar.php';
         }
 
         .project-card-top h2 {
-            font-size: 17px;
+            font-size: 16px;
         }
 
         .project-tambah {
-            padding: 10px 12px;
-            font-size: 12px;
+            padding: 9px 11px;
+            font-size: 11px;
         }
 
         .project-kosong {
